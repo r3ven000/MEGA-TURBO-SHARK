@@ -1,7 +1,7 @@
 from utils import clear_screen, get_terminal_width, in_dev
 from todo import manage_tasks
 from pomodoro import pomodoro
-from habbit_track import habbit_manage, habbit_tracker
+from habbit_track import habbits_manage, habbit_tracker
 from config import WELCOME_ART, ITEMS_MENU
 import os
 import time

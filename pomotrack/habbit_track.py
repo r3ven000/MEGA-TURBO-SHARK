@@ -7,6 +7,7 @@ def habbit_tracker(habbit, width):
     while True:
         width = get_terminal_width()
         clear_screen()
+        
         print("""
     Interactive habbit track manager.
     
@@ -17,12 +18,23 @@ def habbit_tracker(habbit, width):
     - edit <index>: Edit habbit at index
     - quit: Return to main menu
         """.center(width))
+        print("\n" + " habbits list ".center(width, "="))
+        has_habbits = False
+        for index, habit in enumerate(habbit):
+            if habit != 0:
+                habbit_str = f'{index}. {habbit}'
+                print(habbit_str.center(width))
+                has_habbits = True
 
+        print("""
+
+
+        """)
         multi_habbit = input('add / next / del / edit / quit : '.center(width)).strip()
-        
+
         parts = multi_habbit.split()
         #parts-[habbit, number]
-        
+
         if not parts:
             continue
         command = parts[0].lower()
@@ -63,13 +75,6 @@ def habbit_tracker(habbit, width):
                 habbit.append(new_habbit)
             else:
                 print('habbit cannot be empty'.center(width))  
-        print("\n" + " habbits list ".center(width, "="))
-        has_habbits = False
-        for index, habit in enumerate(habbit):
-            if habit != 0:
-                habbit_str = f'{index}. {habbit}'
-                print(habbit_str.center(width))
-                has_habbits = True
 
         #not habbits
         if not has_habbits:
@@ -78,5 +83,6 @@ def habbit_tracker(habbit, width):
         
         elif command == 'next':
             habbits_manage()
+
 
 
