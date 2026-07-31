@@ -20,9 +20,9 @@ def habbit_tracker(habbit, width):
         """.center(width))
         print("\n" + " habbits list ".center(width, "="))
         has_habbits = False
-        for index, habit in enumerate(habbit):
+        for index, habit in enumerate(habbit, start=1):
             if habit != 0:
-                habbit_str = f'{index}. {habbit}'
+                habbit_str = f'{index}. {habit}'
                 print(habbit_str.center(width))
                 has_habbits = True
 
@@ -81,8 +81,7 @@ def habbit_tracker(habbit, width):
             print('there are no habbits yet'.center(width))
             print('=' * width + '\n')
         
-        elif command == 'next':
-            habbits_manage()
+
 
 
 

@@ -7,15 +7,16 @@ import os
 import time
 
 todo_list = []
+habbit_list = []
 
 manager = {
-    't': manage_tasks,
-    'p': pomodoro,
-    'h': habbit_tracker,
-    'd': in_dev,
-    'j': in_dev,
-    'o': in_dev,
-    's': in_dev
+    't': (manage_tasks, todo_list),
+    'p': (pomodoro,),
+    'h': (habbit_tracker, habbit_list),
+    'd': (in_dev,),
+    'j': (in_dev,),
+    'o': (in_dev,),
+    's': (in_dev,),
 }
 
 def main():
@@ -44,9 +45,8 @@ def main():
             break
         action = manager.get(manage_inp) #func in manager
         if action:
-            action(todo_list, width)
-            if action == in_dev:
-                time.sleep(2)
+            func, *args = action
+            func(*args, width)
         else:
             print('command not found!'.center(width))
             time.sleep(2)

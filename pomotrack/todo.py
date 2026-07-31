@@ -2,6 +2,7 @@ from utils import get_terminal_width, clear_screen
 
 def manage_tasks(todo, width):
     while True:
+        clear_screen()
         width = get_terminal_width()
         print("""
     Interactive todo list manager.
@@ -13,6 +14,16 @@ def manage_tasks(todo, width):
     - quit: Return to main menu
         """.center(width))
 
+        print("\n" + " TASKS ".center(width, "="))
+        has_tasks = False
+        for index, task in enumerate(todo, start=1):
+            if task != 0:
+                task_str = f'{index}. {task}'
+                print(task_str.center(width))
+                has_tasks = True
+
+        print('')
+        print('')
         multi_task = input('add / del / edit / quit : '.center(width)).strip()
         
         parts = multi_task.split()
@@ -58,15 +69,7 @@ def manage_tasks(todo, width):
                 todo.append(new_task)
             else:
                 print('task cannot be empty'.center(width))  
-        print("\n" + " TASKS ".center(width, "="))
-        has_tasks = False
-        for index, task in enumerate(todo):
-            if task != 0:
-                task_str = f'{index}. {task}'
-                print(task_str.center(width))
-                has_tasks = True
-
-        #not tasks
+         #not tasks
         if not has_tasks:
             print('there are no tasks yet'.center(width))
             print('=' * width + '\n')
